@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace HttpClient;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
