@@ -8,12 +8,29 @@ use HttpClient\Http\Requests;
 
 class ClientController extends Controller
 {
-    protected function performRequest($method, $url, $parameter = [])
+    protected function performRequest($method, $url, $parameters = [])
     {
     	$client = new Client(['curl' => [CURLOPT_CAINFO => base_path('resources/certs/cacert.pem')]]);
 
-    	$response = $client->request($method, $url, $parameter);
+    	$response = $client->request($method, $url, $parameters);
 
     	return $response->getBody()->getContents();
+    }
+
+    protected function performGetRequest($url)
+    {
+    	$contents =  $this->performRequest('GET', $url);
+
+    	$decodedContents = json_decode($contents);
+
+    	return $decodedContents->data;
+    }
+
+    /**
+     * Functions for Students stuff
+     */
+    protected function obtainAllStudents()
+    {
+    	return $this->performGetRequest('https://lumenapi.juandmegon.com/students');
     }
 }
