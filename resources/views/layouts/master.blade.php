@@ -12,7 +12,7 @@
 <body>
 
 	<div class="page-header">
-	  <h1>HTTP<small>Client</small></h1>
+	  <a href="{{url('/')}}"><h1>HTTP<small>Client</small></h1></a>
 	</div>
 
 	<div class="container-fluid">
