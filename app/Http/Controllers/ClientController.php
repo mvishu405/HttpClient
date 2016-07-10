@@ -26,6 +26,25 @@ class ClientController extends Controller
     	return $decodedContents->data;
     }
 
+    protected function obtainAccessToken()
+    {
+        $grantType = config('api.grant_type');
+        $clientId = config('api.client_id');
+        $clientSecret = config('api.client_secret');
+
+        $contents = $this->performRequest('POST', 'https://lumenapi.juandmegon.com/oauth/access_token',[
+                'form_params' => [
+                    'grant_type' => $grantType,
+                    'client_id' => $clientId,
+                    'client_secret' => $clientSecret]]);
+
+        $decodedContents = json_decode($contents);
+
+        $accessToken = $decodedContents->access_token;
+
+        return $accessToken;
+    }
+
     /**
      * Functions for Students stuff
      */
