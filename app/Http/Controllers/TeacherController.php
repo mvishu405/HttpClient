@@ -41,4 +41,26 @@ class TeacherController extends ClientController
 
         return redirect('/teachers')->with('success', $message);
     }
+
+    public function getUpdateTeacher()
+    {
+        $teachers = $this->obtainAllTeachers();
+        return view('teachers.select-teacher', ['teachers' => $teachers]);
+    }
+
+    public function postUpdateTeacher(Request $request)
+    {
+        $teacherId = $request->get('teacherId');
+
+        $teacher = $this->obtainOneTeacher($teacherId);
+
+        return view('teachers.update-teacher', ['teacher' => $teacher]);
+    }
+
+    public function putUpdateTeacher(Request $request)
+    {
+        $message = $this->updateOneTeacher($request->all());
+
+        return redirect('/teachers')->with('success', $message);
+    }
 }
