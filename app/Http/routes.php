@@ -16,6 +16,12 @@ Route::post('/teacher/remove', 'TeacherController@postRemoveTeacher');
 
 Route::delete('/teacher/remove', 'TeacherController@deleteRemoveTeacher');
 
+Route::get('/student/remove', 'StudentController@getRemoveStudent');
+
+Route::post('/student/remove', 'StudentController@postRemoveStudent');
+
+Route::delete('/student/remove', 'StudentController@deleteRemoveStudent');
+
 Route::get('/teacher/update', 'TeacherController@getUpdateTeacher');
 
 Route::post('/teacher/update', 'TeacherController@postUpdateTeacher');

@@ -24,6 +24,7 @@
 	</ul>
 
 	<ul class="list-group">
+		<li class="list-group-item"><a href="{{url('/student/remove')}}">Delete a Specific Student</a></li>
 		<li class="list-group-item"><a href="{{url('/teacher/remove')}}">Delete a Specific Teacher</a></li>
 	</ul>
 @endsection
