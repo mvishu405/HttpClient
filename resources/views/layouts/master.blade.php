@@ -15,6 +15,8 @@
 	  <a href="{{url('/')}}"><h1>HTTP<small>Client</small></h1></a>
 	</div>
 
+	@include('components.success')
+
 	<div class="container-fluid">
 		@yield('content')
 	</div>

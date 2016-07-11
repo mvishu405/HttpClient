@@ -12,4 +12,9 @@
 		<li class="list-group-item"><a href="{{url('/teacher')}}">Show a Specific Teacher</a></li>
 		<li class="list-group-item"><a href="{{url('/course')}}">Show a Specific Course</a></li>
 	</ul>
+
+	<ul class="list-group">
+		<li class="list-group-item"><a href="{{url('/student/create')}}">Create a Specific Student</a></li>
+		<li class="list-group-item"><a href="{{url('/teacher')}}">Show a Specific Teacher</a></li>
+	</ul>
 @endsection
