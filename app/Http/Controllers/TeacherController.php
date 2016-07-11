@@ -63,4 +63,26 @@ class TeacherController extends ClientController
 
         return redirect('/teachers')->with('success', $message);
     }
+
+    public function getRemoveTeacher()
+    {
+        $teachers = $this->obtainAllTeachers();
+        return view('teachers.select-remove-teacher', ['teachers' => $teachers]);
+    }
+
+    public function postRemoveTeacher(Request $request)
+    {
+        $teacherId = $request->get('teacherId');
+
+        $teacher = $this->obtainOneTeacher($teacherId);
+
+        return view('teachers.confirm-remove-teacher', ['teacher' => $teacher]);
+    }
+
+    public function deleteRemoveTeacher(Request $request)
+    {
+        $message = $this->removeOneTeacher($request->all());
+
+        return redirect('/teachers')->with('success', $message);
+    }
 }

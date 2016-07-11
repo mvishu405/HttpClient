@@ -63,6 +63,15 @@ class ClientController extends Controller
         return $decodedContents->data;
     }
 
+    protected function performDeleteRequest($url, $parameters = [])
+    {
+        $contents =  $this->performAuthorizedRequest('DELETE', $url, $parameters);
+
+        $decodedContents = json_decode($contents);
+
+        return $decodedContents->data;
+    }
+
     protected function performAuthorizedRequest($method, $url, $formParameters = [])
     {
         $requestParameters['form_params'] = $formParameters;
@@ -133,5 +142,11 @@ class ClientController extends Controller
     {
         $teacherId = $parameters['id'];
         return $this->performPutRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}", $parameters);
+    }
+
+    protected function removeOneTeacher($parameters)
+    {
+        $teacherId = $parameters['id'];
+        return $this->performDeleteRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}", $parameters);
     }
 }
