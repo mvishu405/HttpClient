@@ -29,4 +29,16 @@ class TeacherController extends ClientController
 
     	return view('teachers.one-teacher', ['teacher' => $teacher]);
     }
+
+    public function getCreateTeacher()
+    {
+        return view('teachers.create-teacher');
+    }
+
+    public function postCreateTeacher(Request $request)
+    {
+        $message = $this->createOneteacher($request->all());
+
+        return redirect('/teachers')->with('success', $message);
+    }
 }

@@ -108,4 +108,9 @@ class ClientController extends Controller
     {
         return $this->performGetRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}");
     }
+
+    protected function createOneTeacher($paremeters)
+    {
+        return $this->performPostRequest('https://lumenapi.juandmegon.com/teachers', $paremeters);
+    }
 }
