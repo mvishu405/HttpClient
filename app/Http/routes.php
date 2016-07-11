@@ -10,6 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/student/update', 'StudentController@getUpdateStudent');
+
+Route::post('/student/update', 'StudentController@postUpdateStudent');
+
+Route::put('/student/update', 'StudentController@putUpdateStudent');
+
 Route::get('/teacher/create', 'TeacherController@getCreateTeacher');
 
 Route::post('/teacher/create', 'TeacherController@postCreateTeacher');

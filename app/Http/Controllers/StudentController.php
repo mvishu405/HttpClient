@@ -41,4 +41,26 @@ class StudentController extends ClientController
 
         return redirect('/students')->with('success', $message);
     }
+
+    public function getUpdateStudent()
+    {
+        $students = $this->obtainAllStudents();
+        return view('students.select-student', ['students' => $students]);
+    }
+
+    public function postUpdateStudent(Request $request)
+    {
+        $studentId = $request->get('studentId');
+
+        $student = $this->obtainOneStudent($studentId);
+
+        return view('students.update-student', ['student' => $student]);
+    }
+
+    public function putUpdateStudent(Request $request)
+    {
+        $message = $this->updateOneStudent($request->all());
+
+        return redirect('/students')->with('success', $message);
+    }
 }

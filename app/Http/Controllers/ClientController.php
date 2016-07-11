@@ -54,6 +54,15 @@ class ClientController extends Controller
         return $decodedContents->data;
     }
 
+    protected function performPutRequest($url, $parameters = [])
+    {
+        $contents =  $this->performAuthorizedRequest('PUT', $url, $parameters);
+
+        $decodedContents = json_decode($contents);
+
+        return $decodedContents->data;
+    }
+
     protected function performAuthorizedRequest($method, $url, $formParameters = [])
     {
         $requestParameters['form_params'] = $formParameters;
@@ -78,9 +87,15 @@ class ClientController extends Controller
         return $this->performGetRequest("https://lumenapi.juandmegon.com/students/{$studentId}");
     }
 
-    protected function createOneStudent($paremeters)
+    protected function createOneStudent($parameters)
     {
-        return $this->performPostRequest('https://lumenapi.juandmegon.com/students', $paremeters);
+        return $this->performPostRequest('https://lumenapi.juandmegon.com/students', $parameters);
+    }
+
+    protected function updateOneStudent($parameters)
+    {
+        $studentId = $parameters['id'];
+        return $this->performPutRequest("https://lumenapi.juandmegon.com/students/{$studentId}", $parameters);
     }
 
     /**
@@ -109,8 +124,8 @@ class ClientController extends Controller
         return $this->performGetRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}");
     }
 
-    protected function createOneTeacher($paremeters)
+    protected function createOneTeacher($parameters)
     {
-        return $this->performPostRequest('https://lumenapi.juandmegon.com/teachers', $paremeters);
+        return $this->performPostRequest('https://lumenapi.juandmegon.com/teachers', $parameters);
     }
 }
