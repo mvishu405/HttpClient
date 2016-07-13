@@ -23,4 +23,22 @@ class CourseStudentController extends ClientController
 
 		return view('course-student.show-course-students', ['students' => $students]);
 	}
+
+	public function getAddStudent()
+	{
+		$students = $this->obtainAllStudents();
+		$courses = $this->obtainAllCourses();
+
+		return view('course-student.add-student-course', ['students' => $students, 'courses' => $courses]);
+	}
+
+	public function postAddStudent(Request $request)
+	{
+		$courseId = $request->get('courseId');
+		$studentId = $request->get('studentId');
+
+		$message = $this->addStudentToCourse($courseId, $studentId);
+
+		return redirect('/courses/students')->with('success', $message);
+	}
 }
