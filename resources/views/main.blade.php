@@ -30,5 +30,7 @@
 
 	<ul class="list-group">
 		<li class="list-group-item"><a href="{{url('/courses/students')}}">Show The Students of a Course</a></li>
+
+		<li class="list-group-item"><a href="{{url('/teachers/courses')}}">Show The Courses of a Teacher</a></li>
 	</ul>
 @endsection

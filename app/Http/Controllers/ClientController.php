@@ -158,11 +158,20 @@ class ClientController extends Controller
 
 
     /**
-     * Courses - Studens functions
+     * Courses - Students functions
      */
     protected function obtainCourseStudents($courseId)
     {
         return $this->performGetRequest("https://lumenapi.juandmegon.com/courses/{$courseId}/students");
+    }
+
+
+    /**
+     * Teachers  - Courses functions
+     */
+    protected function obtainTeacherCourses($teacherId)
+    {
+        return $this->performGetRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}/courses");
     }
 
 }
