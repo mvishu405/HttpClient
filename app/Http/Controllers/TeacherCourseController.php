@@ -59,4 +59,26 @@ class TeacherCourseController extends ClientController
 
         return redirect('/courses')->with('success', $message);
     }
+
+    public function getRemoveCourse()
+    {
+        $courses = $this->obtainAllCourses();
+        return view('teacher-course.select-course-remove', ['courses' => $courses]);
+    }
+
+    public function postRemoveCourse(Request $request)
+    {
+        $courseId = $request->get('courseId');
+        $teachers = $this->obtainAllTeachers();
+        $course = $this->obtainOneCourse($courseId);
+
+        return view('teacher-course.remove-course', ['course' => $course, 'teachers' => $teachers]);
+    }
+
+    public function deleteRemoveCourse(Request $request)
+    {
+        $message = $this->removeOneCourse($request->all());
+
+        return redirect('/courses')->with('success', $message);
+    }
 }
