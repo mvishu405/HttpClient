@@ -23,4 +23,18 @@ class TeacherCourseController extends ClientController
 
 		return view('teacher-course.show-teacher-courses', ['courses' => $courses]);
 	}
+
+	public function getCreateCourse()
+	{
+		$teachers = $this->obtainAllTeachers();
+
+		return view('teacher-course.create-course', ['teachers' => $teachers]);
+	}
+
+	public function postCreateCourse(Request $request)
+	{
+		$message = $this->createOneCourse($request->all());
+
+		return redirect('/courses')->with('success', $message);
+	}
 }
