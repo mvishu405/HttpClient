@@ -185,4 +185,11 @@ class ClientController extends Controller
         return $this->performPostRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}/courses", $parameters);
     }
 
+    protected function updateOneCourse($parameters)
+    {
+        $teacherId = $parameters['teacherId'];
+        $courseId = $parameters['courseId'];
+        return $this->performPutRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}/courses/{$courseId}", $parameters);
+    }
+
 }

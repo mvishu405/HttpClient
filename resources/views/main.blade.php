@@ -22,6 +22,7 @@
 	<ul class="list-group">
 		<li class="list-group-item"><a href="{{url('/student/update')}}">Update a Specific Student</a></li>
 		<li class="list-group-item"><a href="{{url('/teacher/update')}}">Update a Specific Teacher</a></li>
+		<li class="list-group-item"><a href="{{url('/teachers/courses/update')}}">Update a Specific Course</a></li>
 	</ul>
 
 	<ul class="list-group">
