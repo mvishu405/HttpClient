@@ -155,4 +155,14 @@ class ClientController extends Controller
         $teacherId = $parameters['id'];
         return $this->performDeleteRequest("https://lumenapi.juandmegon.com/teachers/{$teacherId}", $parameters);
     }
+
+
+    /**
+     * Courses - Studens functions
+     */
+    protected function obtainCourseStudents($courseId)
+    {
+        return $this->performGetRequest("https://lumenapi.juandmegon.com/courses/{$courseId}/students");
+    }
+
 }
