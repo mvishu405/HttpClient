@@ -41,4 +41,25 @@ class CourseStudentController extends ClientController
 
 		return redirect('/courses/students')->with('success', $message);
 	}
+
+	public function getRemoveStudent()
+    {
+        $courses = $this->obtainAllCourses();
+        return view('course-student.select-course-remove', ['courses' => $courses]);
+    }
+
+    public function postRemoveStudent(Request $request)
+    {
+        $courseId = $request->get('courseId');
+        $students = $this->obtainCourseStudents($courseId);
+
+        return view('course-student.remove-student', ['students' => $students, 'courseId' => $courseId]);
+    }
+
+    public function deleteRemoveStudent(Request $request)
+    {
+        $message = $this->removeCourseStudent($request->all());
+
+        return redirect('/courses/students')->with('success', $message);
+    }
 }

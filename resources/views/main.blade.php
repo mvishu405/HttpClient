@@ -33,9 +33,8 @@
 
 	<ul class="list-group">
 		<li class="list-group-item"><a href="{{url('/courses/students')}}">Show The Students of a Course</a></li>
-
 		<li class="list-group-item"><a href="{{url('/teachers/courses')}}">Show The Courses of a Teacher</a></li>
-
 		<li class="list-group-item"><a href="{{url('/courses/students/add')}}">Add a Student to a Course</a></li>
+		<li class="list-group-item"><a href="{{url('/courses/students/remove')}}">Remove a Student from a Course</a></li>
 	</ul>
 @endsection
