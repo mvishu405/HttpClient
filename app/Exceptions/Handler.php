@@ -54,6 +54,12 @@ class Handler extends ExceptionHandler
 
             return redirect()->back()->withErrors($message)->withInput($request->all());
         }
+
+        if($e instanceof EmptyDataException)
+        {
+            return redirect()->back()->withErrors($e->getMessage());
+        }
+        
         return parent::render($request, $e);
     }
 }
