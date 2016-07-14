@@ -3,6 +3,7 @@
 namespace HttpClient\Exceptions;
 
 use Exception;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -45,6 +46,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if($e instanceof ClientException)
+        {
+            $content = json_decode($e->getResponse()->getBody()->getContents());
+
+            $message = $content->message;
+
+            return redirect()->back()->withErrors($message)->withInput($request->all());
+        }
         return parent::render($request, $e);
     }
 }

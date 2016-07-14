@@ -7,7 +7,7 @@
 	
 		<div class="form-group">
 			<label for="">Teacher Id</label>
-			<input type="number" class="form-control" placeholder="The teacher Id" name="teacherId" required>
+			<input type="number" class="form-control" placeholder="The teacher Id" name="teacherId" required value="{{old('teacherId')}}">
 		</div>
 	
 		

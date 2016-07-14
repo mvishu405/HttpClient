@@ -16,6 +16,7 @@
 	</div>
 
 	@include('components.success')
+	@include('components.errors')
 
 	<div class="container-fluid">
 		@yield('content')
